@@ -1,73 +1,64 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FormationController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', [FormationController::class, 'list'])->name('home');        //[done]
+
+Route::prefix('insctructor')->group(function () {
+    Route::get('/add-formation', [InstructorController::class, 'addCourse'])->name('instructor.addCourse'); //[done]
+    Route::post('/store-formation', [InstructorController::class, 'storeCourse'])->name('instructor.storeCourse'); //[]
+    Route::get('/chat', [InstructorController::class, 'chat'])->name('instructor.chat'); //[done]
+    Route::get('/edit-profile', [InstructorController::class, 'editProfile'])->name('instructor.editProfile');      //[done]
+    Route::post('/update-profile', [InstructorController::class, 'updateProfile'])->name('instructor.updateProfile');      //[]
+    Route::get('/my-formations', [InstructorController::class, 'myFormations'])->name('instructor.myFormations');   //[done]
+    Route::get('/my-earnings', [InstructorController::class, 'myEarnings'])->name('instructor.myEarnings'); //[done]
+    Route::get('/linked-accounts', [InstructorController::class, 'linkedAccounts'])->name('instructor.linkedAccounts'); //[done]
+    Route::post('/update-linked-accounts', [InstructorController::class, 'updateLinkedAccounts'])->name('instructor.updateLinkedAccounts'); //[]
+    Route::get('/notifications', [InstructorController::class, 'notifications'])->name('instructor.notifications'); //[done]
+    Route::get('/notifications-setup', [InstructorController::class, 'notificationSetup'])->name('instructor.notificationSetup'); //[]
+    Route::get('/payouts', [InstructorController::class, 'payouts'])->name('instructor.payouts');       //[done]
+    Route::get('/security', [InstructorController::class, 'security'])->name('instructor.security');    //[done]
+    Route::get('/student-list', [InstructorController::class, 'studentList'])->name('instructor.studentList'); //[done]
+    Route::get('/student-purchase', [InstructorController::class, 'studentPurchase'])->name('instructor.studentPurchase'); //[done]
+    Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard'); //[done]
+    Route::get('/privacy', [InstructorController::class, 'privacy'])->name('instructor.privacy');   //[done]
+    Route::get('/support', [InstructorController::class, 'support'])->name('instructor.support');   //[done]
+    Route::get('/terms', [InstructorController::class, 'terms'])->name('instructor.terms');         //[done]
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::prefix('student')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/billing', [StudentController::class, 'billing'])->name('student.billing');      //[]
+    Route::get('/edit-profile', [StudentController::class, 'editProfile'])->name('student.editProfile'); //[]
+    Route::post('/update-profile', [StudentController::class, 'updateProfile'])->name('student.updateProfile'); //[]
+    Route::get('/linked-accounts', [StudentController::class, 'linkedAccounts'])->name('student.linkedAccounts');    //[]
+    Route::post('/update-linked-accounts', [StudentController::class, 'updateLinkedAccounts'])->name('student.updateLinkedAccounts');    //[]
+    Route::get('/list-training', [StudentController::class, 'listTraining'])->name('student.listTraining');          //[]
+    Route::get('/notifications', [StudentController::class, 'notifications'])->name('student.notifications');        //[]
+    Route::get('/notifications-setup', [StudentController::class, 'notificationSetup'])->name('student.notificationSetup'); //[]
+    Route::get('/payments', [StudentController::class, 'payments'])->name('student.payments');   //[]
+    Route::get('/profile-preview', [StudentController::class, 'profilePreview'])->name('student.profilePreview');    //[]
+    Route::get('/purchase', [StudentController::class, 'purchase'])->name('student.purchase');   //[]
+    Route::get('/referral', [StudentController::class, 'referral'])->name('student.referral');   //[]
+    Route::get('/security', [StudentController::class, 'security'])->name('student.security');   //[]
+    Route::get('/social', [StudentController::class, 'social'])->name('student.social');         //[]
+    Route::get('/tickets', [StudentController::class, 'tickets'])->name('student.tickets');      //[]
+    Route::get('/wishlist', [StudentController::class, 'wishlist'])->name('student.wishlist');   //[]
 });
 
-Route::get('/admin', function () {
-})->middleware('role:admin');
+Route::prefix('formation')->group(function () {
+    Route::middleware('auth')->group(function() {
+        Route::get('/checkout', [FormationController::class, 'checkout'])->name('formation.checkout'); //[]
+        Route::get('/invoice', [FormationController::class, 'invoice'])->name('formation.invoice');    //[]
+    });
+    Route::get('/list', [FormationController::class, 'list'])->name('formation.list');             //[]
+    Route::get('/search', [FormationController::class, 'search'])->name('formation.search');       //[]
+    Route::get('/show', [FormationController::class, 'show'])->name('formation.show');             //[]
+});
 
-// User routes
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/create', [UserController::class, 'create']);
-Route::post('/users', [UserController::class, 'store']);
-Route::get('/users/{user}', [UserController::class, 'show']);
-Route::get('/users/{user}/edit', [UserController::class, 'edit']);
-Route::put('/users/{user}', [UserController::class, 'update']);
-Route::delete('/users/{user}', [UserController::class, 'destroy']);
-
-// Training routes
-Route::get('/trainings', [TrainingController::class, 'index']);
-Route::get('/trainings/create', [TrainingController::class, 'create']);
-Route::post('/trainings', [TrainingController::class, 'store']);
-Route::get('/trainings/{training}', [TrainingController::class, 'show']);
-Route::get('/trainings/{training}/edit', [TrainingController::class, 'edit']);
-Route::put('/trainings/{training}', [TrainingController::class, 'update']);
-Route::delete('/trainings/{training}', [TrainingController::class, 'destroy']);
-
-// Booking routes
-Route::get('/bookings', [BookingController::class, 'index']);
-Route::get('/bookings/create', [BookingController::class, 'create']);
-Route::post('/bookings', [BookingController::class, 'store']);
-Route::get('/bookings/{booking}', [BookingController::class, 'show']);
-Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit']);
-Route::put('/bookings/{booking}', [BookingController::class, 'update']);
-Route::delete('/bookings/{booking}', [BookingController::class, 'destroy']);
-
-// Payment routes
-Route::get('/payments', [PaymentController::class, 'index']);
-Route::get('/payments/create', [PaymentController::class, 'create']);
-Route::post('/payments', [PaymentController::class, 'store']);
-Route::get('/payments/{payment}', [PaymentController::class, 'show']);
-Route::get('/payments/{payment}/edit', [PaymentController::class, 'edit']);
-Route::put('/payments/{payment}', [PaymentController::class, 'update']);
-Route::delete('/payments/{payment}', [PaymentController::class, 'destroy']);
-
-
-
-
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

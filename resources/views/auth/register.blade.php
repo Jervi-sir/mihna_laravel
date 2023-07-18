@@ -1,52 +1,102 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('auth.master')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('content')
+<div class="col-md-6 login-bg">
+    <div class="owl-carousel login-slide owl-theme">
+      <div class="welcome-login">
+        <div class="login-banner">
+          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="mentor-course text-center">
+          <h2>Welcome to <br>DreamsLMS Courses. </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+      </div>
+      <div class="welcome-login">
+        <div class="login-banner">
+          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
         </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="mentor-course text-center">
+          <h2>Welcome to <br>DreamsLMS Courses. </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
         </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
+      </div>
+      <div class="welcome-login">
+        <div class="login-banner">
+          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
         </div>
-    </form>
-</x-guest-layout>
+        <div class="mentor-course text-center">
+          <h2>Welcome to <br>DreamsLMS Courses. </h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="col-md-6 login-wrap-bg">
+    <div class="login-wrapper">
+      <div class="loginbox">
+        <div class="img-logo">
+          <img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
+          <div class="back-home">
+            <a href="index.html">Back to Home</a>
+          </div>
+        </div>
+        <h1>Sign up</h1>
+        <form action="https://dreamslms.dreamguystech.com/html/login.html">
+          <div class="form-group">
+            <label class="form-control-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Enter your Full Name">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Email</label>
+            <input type="email" class="form-control" placeholder="Enter your email address">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Password</label>
+            <div class="pass-group" id="passwordInput">
+              <input type="password" class="form-control pass-input" placeholder="Enter your password">
+              <span class="toggle-password feather-eye"></span>
+              <span class="pass-checked">
+                <i class="feather-check"></i>
+              </span>
+            </div>
+            <div class="password-strength" id="passwordStrength">
+              <span id="poor"></span>
+              <span id="weak"></span>
+              <span id="strong"></span>
+              <span id="heavy"></span>
+            </div>
+            <div id="passwordInfo"></div>
+          </div>
+          <div class="form-check remember-me">
+            <label class="form-check-label mb-0">
+              <input class="form-check-input" type="checkbox" name="remember"> I agree to the <a href="term-condition.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy.</a>
+            </label>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary btn-start" type="submit">Create Account</button>
+          </div>
+        </form>
+      </div>
+      <div class="google-bg text-center">
+        <span>
+          <a href="#">Or sign in with</a>
+        </span>
+        <div class="sign-google">
+          <ul>
+            <li>
+              <a href="#">
+                <img src="assets/img/net-icon-01.png" class="img-fluid" alt="Logo"> Sign In using Google </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="assets/img/net-icon-02.png" class="img-fluid" alt="Logo">Sign In using Facebook </a>
+            </li>
+          </ul>
+        </div>
+        <p class="mb-0">Already have an account? <a href="login.html">Sign in</a>
+        </p>
+      </div>
+    </div>
+</div>
+@endsection

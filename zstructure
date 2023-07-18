@@ -1,0 +1,34 @@
+[] Homepage shows trendy formations offers. 
+    [] it has filters such as: name, field, wialaya, other like instructure
+
+[] details page of the formation that will contain:
+    description, 
+    nb minimum sits
+    price
+    location
+    pictures
+    intructure
+    company who shared it
+    date 
+    stars for the company who created the formation
+
+[] checkout page for each formation that will be like so
+    user will enter payment credentials in order to purchase a sit in the formation
+    the payment should be half to full price 
+
+list my formations purchased
+    [] that will show what user has registered to
+    [] show also status of each formation (if confirmed or no)
+
+
+[] notifications
+
+an admin page that 
+    [] shows list of added formations
+    [] stats of each formation
+    [] create a formation
+    [] edit formation
+    [] show profile
+    [] edit profile
+
+
