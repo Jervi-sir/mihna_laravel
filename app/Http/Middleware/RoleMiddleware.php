@@ -23,7 +23,7 @@ class RoleMiddleware
         $user = Auth::user();
 
         if ($user->role->name !== $role) {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return $next($request);

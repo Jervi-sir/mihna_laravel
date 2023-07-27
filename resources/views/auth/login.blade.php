@@ -1,95 +1,39 @@
 @extends('auth.master')
 
 @section('content')
-<div class="col-md-6 login-bg">
-    <div class="owl-carousel login-slide owl-theme">
-      <div class="welcome-login">
-        <div class="login-banner">
-          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
-        </div>
-        <div class="mentor-course text-center">
-          <h2>Welcome to <br>DreamsLMS Courses. </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
+<div class="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16">
+    <h3 class="text-30 lh-13">Welcome Student</h3>
+    <p class="mt-10">Don't have an account yet? <a href="{{ route('register') }}"  class="text-purple-1">Sign up for free</a></p>
+    <form class="contact-form respondForm__form row y-gap-20 pt-30" method="POST" action="{{ route('login') }}">
+      @csrf
+      <div class="col-12">
+          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Username Or Email</label>
+          <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="username" >
+          @include('components.errors', ['messages' => $errors->get('email')])
       </div>
-      <div class="welcome-login">
-        <div class="login-banner">
-          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
-        </div>
-        <div class="mentor-course text-center">
-          <h2>Welcome to <br>DreamsLMS Courses. </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
+      <div class="col-12">
+          <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Password</label>
+          <input type="password" placeholder="Password" name="password" required autocomplete="new-password" >
+          @include('components.errors', ['messages' => $errors->get('password')])
       </div>
-      <div class="welcome-login">
-        <div class="login-banner">
-          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
-        </div>
-        <div class="mentor-course text-center">
-          <h2>Welcome to <br>DreamsLMS Courses. </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
+      @if (Route::has('password.request'))
+      <div style="text-align: end; padding-top: 10px; color: #309255">
+          <a href="{{ route('password.request') }}" style="">
+              {{ __('Forgot your password?') }}
+          </a>
       </div>
-    </div>
-</div>
-<div class="col-md-6 login-wrap-bg">
-    <div class="login-wrapper">
-      <div class="loginbox">
-        <div class="w-100">
-          <div class="img-logo">
-            <img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
-            <div class="back-home">
-              <a href="index.html">Back to Home</a>
-            </div>
-          </div>
-          <h1>Sign into Your Account</h1>
-          <form action="https://dreamslms.dreamguystech.com/html/instructor-dashboard.html">
-            <div class="form-group">
-              <label class="form-control-label">Email</label>
-              <input type="email" class="form-control" placeholder="Enter your email address">
-            </div>
-            <div class="form-group">
-              <label class="form-control-label">Password</label>
-              <div class="pass-group">
-                <input type="password" class="form-control pass-input" placeholder="Enter your password">
-                <span class="feather-eye toggle-password"></span>
-              </div>
-            </div>
-            <div class="forgot">
-              <span>
-                <a class="forgot-link" href="forgot-password.html">Forgot Password ?</a>
-              </span>
-            </div>
-            <div class="remember-me">
-              <label class="custom_check mr-2 mb-0 d-inline-flex remember-me"> Remember me <input type="checkbox" name="radio">
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div class="d-grid">
-              <button class="btn btn-primary btn-start" type="submit">Sign In</button>
-            </div>
-          </form>
-        </div>
+      @endif
+      <input id="remember_me" type="checkbox" name="remember" checked hidden>
+      <div class="col-12">
+        <button type="submit" name="submit" id="submit" class="button -md -green-1 text-dark-1 fw-500 w-1/1">
+          Login
+        </button>
       </div>
-      <div class="google-bg text-center">
-        <span>
-          <a href="#">Or sign in with</a>
-        </span>
-        <div class="sign-google">
-          <ul>
-            <li>
-              <a href="#">
-                <img src="assets/img/net-icon-01.png" class="img-fluid" alt="Logo"> Sign In using Google </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="assets/img/net-icon-02.png" class="img-fluid" alt="Logo">Sign In using Facebook </a>
-            </li>
-          </ul>
-        </div>
-        <p class="mb-0">New User ? <a href="register.html">Create an Account</a>
-        </p>
-      </div>
+    </form>
+
+    <div class="lh-12 text-dark-1 fw-500 text-center mt-20">Or</div>
+    <div class="d-flex x-gap-20 items-center justify-between pt-20">
+      <button class="col-12 button -sm px-24 py-25 -outline-red-3 text-red-3 text-14">Log In with Google</button>
     </div>
 </div>
 @endsection

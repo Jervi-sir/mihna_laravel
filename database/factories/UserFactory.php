@@ -23,6 +23,8 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
+            //'phone_number' => $this->faker->phoneNumber,
+            'profile_pic' => 'https://placehold.co/400x400'
         ];
     }
 

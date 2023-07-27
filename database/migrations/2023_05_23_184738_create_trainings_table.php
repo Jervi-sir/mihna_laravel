@@ -13,10 +13,21 @@ return new class extends Migration
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained();
             $table->foreignId('coach_id')->constrained('users');
+            $table->foreignId('wilaya_id')->constrained();
+            
+            $table->string('address')->nullable();
             $table->string('title');
-            $table->text('description');
+            $table->text('short_description');
+            $table->text('long_description');
             $table->integer('min_seats');
+            $table->string('images');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->float('price');
+            $table->tinyInteger('certificate')->default(1);
+            
             $table->timestamps();
         });
     }

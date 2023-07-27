@@ -1,102 +1,41 @@
 @extends('auth.master')
 
 @section('content')
-<div class="col-md-6 login-bg">
-    <div class="owl-carousel login-slide owl-theme">
-      <div class="welcome-login">
-        <div class="login-banner">
-          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
+<div class="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16">
+    <h3 class="text-30 lh-13">Sign Up</h3>
+    <p class="mt-10">Already have an account? <a href="{{ route('login') }}" class="text-purple-1">Log in</a></p>
+
+    <form class="contact-form respondForm__form row y-gap-20 pt-30" method="POST" action="{{ route('register') }}">
+        @csrf
+        <div class="col-lg-6">
+            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Email address *</label>
+            <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="username" >
+            @include('components.errors', ['messages' => $errors->get('email')])
         </div>
-        <div class="mentor-course text-center">
-          <h2>Welcome to <br>DreamsLMS Courses. </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <div class="col-lg-6">
+            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Username *</label>
+            <input type="text" name="name" value="{{ old('name') }}" placeholder="Name" required autofocus autocomplete="name" >
+            @include('components.errors', ['messages' => $errors->get('name')])
         </div>
-      </div>
-      <div class="welcome-login">
-        <div class="login-banner">
-          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
+        <div class="col-lg-6">
+            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Password *</label>
+            <input type="password" placeholder="Password" name="password" required autocomplete="new-password" >
+            @include('components.errors', ['messages' => $errors->get('password')])
         </div>
-        <div class="mentor-course text-center">
-          <h2>Welcome to <br>DreamsLMS Courses. </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        <div class="col-lg-6">
+            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Confirm Password *</label>
+            <input type="password" placeholder="Confirm Password" type="password" name="password_confirmation" required autocomplete="new-password" >
+            @include('components.errors', ['messages' => $errors->get('password_confirmation')])
         </div>
-      </div>
-      <div class="welcome-login">
-        <div class="login-banner">
-          <img src="assets/img/login-img.png" class="img-fluid" alt="Logo">
+        <div class="col-12">
+            <button type="submit" name="submit" id="submit" class="button -md -green-1 text-dark-1 fw-500 w-1/1">
+                Create an account
+            </button>
         </div>
-        <div class="mentor-course text-center">
-          <h2>Welcome to <br>DreamsLMS Courses. </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-        </div>
-      </div>
-    </div>
-</div>
-<div class="col-md-6 login-wrap-bg">
-    <div class="login-wrapper">
-      <div class="loginbox">
-        <div class="img-logo">
-          <img src="assets/img/logo.svg" class="img-fluid" alt="Logo">
-          <div class="back-home">
-            <a href="index.html">Back to Home</a>
-          </div>
-        </div>
-        <h1>Sign up</h1>
-        <form action="https://dreamslms.dreamguystech.com/html/login.html">
-          <div class="form-group">
-            <label class="form-control-label">Full Name</label>
-            <input type="text" class="form-control" placeholder="Enter your Full Name">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label">Email</label>
-            <input type="email" class="form-control" placeholder="Enter your email address">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label">Password</label>
-            <div class="pass-group" id="passwordInput">
-              <input type="password" class="form-control pass-input" placeholder="Enter your password">
-              <span class="toggle-password feather-eye"></span>
-              <span class="pass-checked">
-                <i class="feather-check"></i>
-              </span>
-            </div>
-            <div class="password-strength" id="passwordStrength">
-              <span id="poor"></span>
-              <span id="weak"></span>
-              <span id="strong"></span>
-              <span id="heavy"></span>
-            </div>
-            <div id="passwordInfo"></div>
-          </div>
-          <div class="form-check remember-me">
-            <label class="form-check-label mb-0">
-              <input class="form-check-input" type="checkbox" name="remember"> I agree to the <a href="term-condition.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy.</a>
-            </label>
-          </div>
-          <div class="d-grid">
-            <button class="btn btn-primary btn-start" type="submit">Create Account</button>
-          </div>
         </form>
-      </div>
-      <div class="google-bg text-center">
-        <span>
-          <a href="#">Or sign in with</a>
-        </span>
-        <div class="sign-google">
-          <ul>
-            <li>
-              <a href="#">
-                <img src="assets/img/net-icon-01.png" class="img-fluid" alt="Logo"> Sign In using Google </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="assets/img/net-icon-02.png" class="img-fluid" alt="Logo">Sign In using Facebook </a>
-            </li>
-          </ul>
+        <div class="lh-12 text-dark-1 fw-500 text-center mt-20">Or</div>
+        <div class="d-flex x-gap-20 items-center justify-between pt-20">
+        <button class="col-12 button -sm px-24 py-25 -outline-red-3 text-red-3 text-14">Sign up with Google</button>
         </div>
-        <p class="mb-0">Already have an account? <a href="login.html">Sign in</a>
-        </p>
-      </div>
     </div>
-</div>
 @endsection

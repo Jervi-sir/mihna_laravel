@@ -24,7 +24,10 @@ class DatabaseSeeder extends Seeder
         // Create some coaches and students
         $coaches = User::factory()->count(5)->create(['role_id' => $coachRole->id]);
         $students = User::factory()->count(20)->create(['role_id' => $studentRole->id]);
-  
+        $categories = new CategoriesTableSeeder();
+        $categories->run();
+        $wilayas = new WilayasTableSeeder();
+        $wilayas->run();
         // Each coach creates some trainings
         foreach ($coaches as $coach) {
             Training::factory()->count(3)->create(['coach_id' => $coach->id]);
