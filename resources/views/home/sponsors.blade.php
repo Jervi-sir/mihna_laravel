@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row justify-center">
         <div class="col text-center">
-          <p class="text-lg text-dark-1">Trusted by the world’s best</p>
+          <p class="text-lg text-dark-1">La confiance des meilleurs du marchet</p>
         </div>
       </div>
 

@@ -19,15 +19,24 @@ return new class extends Migration
             
             $table->string('address')->nullable();
             $table->string('title');
-            $table->text('short_description');
+
+            $table->text('short_description')->nullable();
             $table->text('long_description');
-            $table->integer('min_seats');
+            $table->text('what_learned')->nullable();
+            $table->text('requirements')->nullable();
+            $table->text('planning')->nullable();
+
+            $table->integer('min_seats')->nullable();
+            $table->integer('total_seats');
+            $table->integer('nb_booked')->default(0);
             $table->string('images');
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->float('price');
             $table->tinyInteger('certificate')->default(1);
             
+            $table->bigInteger('visit_count')->default(0); // Adds visit_count column
+
             $table->timestamps();
         });
     }

@@ -49,5 +49,6 @@
   <!-- JavaScript -->
   <script src="{{ asset('js/vendors.js')}}"></script>
   <script src="{{ asset('js/main.js')}}"></script>
+  @yield('script-footer')
 </body>
 </html>

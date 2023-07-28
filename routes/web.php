@@ -25,13 +25,21 @@ Route::prefix('instructor')->group(function () {
     
     Route::middleware(['auth', 'role:coach'])->group(function () {
         Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard'); //[withoutReturn]
-        Route::get('/add-formation', [InstructorController::class, 'addCourse'])->name('instructor.addFormation'); //[linked]
+        Route::get('/add-formation', [InstructorController::class, 'addCourse'])->name('instructor.addFormation'); //[done]
 
-        Route::post('/store-formation', [InstructorController::class, 'storeCourse'])->name('instructor.storeFormation'); //[]
-        Route::get('/edit-profile', [InstructorController::class, 'editProfile'])->name('instructor.editProfile');      //[withoutReturn]
-        Route::post('/update-profile', [InstructorController::class, 'updateProfile'])->name('instructor.updateProfile');      //[]
+        Route::post('/store-formation', [InstructorController::class, 'storeFormation'])->name('instructor.storeFormation'); //[done]
+        Route::get('/edit-profile', [InstructorController::class, 'editProfile'])->name('instructor.editProfile');      //[done]
+        
+        Route::post('/update-profile', [InstructorController::class, 'updateProfile'])->name('instructor.updateProfile');      //[done]
+        Route::post('/update-password', [InstructorController::class, 'updatePassword'])->name('instructor.updatePassword');      //[]
+        Route::post('/update-social', [InstructorController::class, 'updateSocial'])->name('instructor.updateSocial');      //[]
 
-        Route::get('/my-formations', [InstructorController::class, 'myFormations'])->name('instructor.myFormations');   //[withoutReturn]
+        Route::get('/my-formations', [InstructorController::class, 'myFormations'])->name('instructor.myFormations');   //[done]
+        Route::get('/my-formations/active', [InstructorController::class, 'myFormationsActive'])->name('instructor.myFormationsActive');   //[done]
+        Route::get('/my-formations/finished', [InstructorController::class, 'myFormationsFinished'])->name('instructor.myFormationsFinished');   //[done]
+        Route::get('/my-formations/all', [InstructorController::class, 'myFormationsAll'])->name('instructor.myFormationsAll');   //[done]
+
+        Route::post('/report-issue', [InstructorController::class, 'reportIssue'])->name('instructor.reportIssue'); //[]
 
         Route::get('/chat', [InstructorController::class, 'chat'])->name('instructor.chat'); //[]
         Route::get('/my-earnings', [InstructorController::class, 'myEarnings'])->name('instructor.myEarnings'); //[]

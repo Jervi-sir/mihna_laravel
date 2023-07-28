@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16">
-    <h3 class="text-30 lh-13">Sign Up</h3>
+    <h3 class="text-30 lh-13">Sign Up as Student</h3>
     <p class="mt-10">Already have an account? <a href="{{ route('login') }}" class="text-purple-1">Log in</a></p>
 
     <form class="contact-form respondForm__form row y-gap-20 pt-30" method="POST" action="{{ route('register') }}">
@@ -35,7 +35,7 @@
         </form>
         <div class="lh-12 text-dark-1 fw-500 text-center mt-20">Or</div>
         <div class="d-flex x-gap-20 items-center justify-between pt-20">
-        <button class="col-12 button -sm px-24 py-25 -outline-red-3 text-red-3 text-14">Sign up with Google</button>
+            <a href="{{ route('instructor.register') }}" class="col-12 button -sm px-24 py-25 -outline-dark-3 text-dark-3 text-14">Devenir un Formateur</a>
         </div>
     </div>
 @endsection

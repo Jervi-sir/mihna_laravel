@@ -81,34 +81,16 @@ class FormationController extends Controller
     }
     public function show($formation_id) {
         $training = Training::find($formation_id);
-        $coach = $training->coach;
+        $training->increment('visit_count'); // Increment the visit count
 
-        $start_date = new \DateTime($training->start_date);
-        $end_date = new \DateTime($training->end_date);
-
-        $interval = $start_date->diff($end_date);
-        //echo $interval->format('%a days');  // Output: 9 days
-
-        $data['training'] = [
-            'id' => $training->id,
-            'title' => $training->title,
-            'short_description' => $training->short_description,
-            'long_description' => $training->long_description,
-            'category_name' => $training->category->name,
-            'min_seats' => $training->min_seats,
-            'images' => $training->images,
-            'start_date' => $training->start_date,
-            'end_date' => $training->end_date,
-            'price' => $training->price,
-            'coach_id' => $training->coach_id, 
-            'coach_name' => $coach->name,
-            'wilaya_name' => $training->wilaya->name,
-            'left_places' => 2,
-            'duration' => $interval->format('%a'),
-        ];
-
+        $data['training'] = getFormationDetails($training);
+        $suggestions = Training::all();
+        foreach ($suggestions as $key => $suggestion) {
+            $data['suggestions'][$key] = getFormation($suggestion);
+        }
         return view('formations.show',[
             'formation' => $data['training'],
+            'suggestions' => $data['suggestions'],
         ]);
     }
     public function showCoach($coach_id) {

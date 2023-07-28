@@ -6,8 +6,12 @@ namespace App\Models;
 use App\Models\Role;
 use App\Models\Booking;
 use App\Models\Training;
+use App\Models\Instructor;
+use App\Models\Notification;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -24,7 +28,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'phone_number'
     ];
 
     /**
@@ -61,4 +66,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Training::class, 'coach_id');
     }
+
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Instructor::class);
+    }
+
+    public function notifications(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function unreadNotifications(): HasMany
+    {
+        return $this->hasMany(Notification::class)->whereNull('read_at');
+    }
+    
 }

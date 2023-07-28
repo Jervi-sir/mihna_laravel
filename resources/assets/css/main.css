@@ -2725,22 +2725,22 @@ input[type="email"] {
   border: 0;
 }
 
-.-dark-mode form.contact-form select,
-.-dark-mode form.contact-form input[type="text"],
-.-dark-mode form.contact-form input[type="password"],
-.-dark-mode form.contact-form input[type="search"],
-.-dark-mode form.contact-form textarea,
-.-dark-mode form.contact-form input[type="email"] {
+.-dark-mode .contact-form select,
+.-dark-mode .contact-form input[type="text"],
+.-dark-mode .contact-form input[type="password"],
+.-dark-mode .contact-form input[type="search"],
+.-dark-mode .contact-form textarea,
+.-dark-mode .contact-form input[type="email"] {
   border-color: rgba(255, 255, 255, 0.2);
   color: white !important;
 }
 
-form.contact-form select,
-form.contact-form input[type="text"],
-form.contact-form input[type="password"],
-form.contact-form input[type="search"],
-form.contact-form textarea,
-form.contact-form input[type="email"] {
+.contact-form select,
+.contact-form input[type="text"],
+.contact-form input[type="password"],
+.contact-form input[type="search"],
+.contact-form textarea,
+.contact-form input[type="email"] {
   border: 0;
   outline: none;
   width: 100%;
@@ -2753,59 +2753,59 @@ form.contact-form input[type="email"] {
   transition: all 0.15s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-form.contact-form select:focus,
-form.contact-form input[type="text"]:focus,
-form.contact-form input[type="password"]:focus,
-form.contact-form input[type="search"]:focus,
-form.contact-form textarea:focus,
-form.contact-form input[type="email"]:focus {
+.contact-form select:focus,
+.contact-form input[type="text"]:focus,
+.contact-form input[type="password"]:focus,
+.contact-form input[type="search"]:focus,
+.contact-form textarea:focus,
+.contact-form input[type="email"]:focus {
   outline: none;
 }
 
-form.contact-form select.-border-dark,
-form.contact-form input[type="text"].-border-dark,
-form.contact-form input[type="password"].-border-dark,
-form.contact-form input[type="search"].-border-dark,
-form.contact-form textarea.-border-dark,
-form.contact-form input[type="email"].-border-dark {
+.contact-form select.-border-dark,
+.contact-form input[type="text"].-border-dark,
+.contact-form input[type="password"].-border-dark,
+.contact-form input[type="search"].-border-dark,
+.contact-form textarea.-border-dark,
+.contact-form input[type="email"].-border-dark {
   border: 1px solid rgba(0, 0, 0, 0.15) !important;
 }
 
-form.contact-form ::-moz-placeholder {
+.contact-form ::-moz-placeholder {
   font-weight: 400;
 }
 
-form.contact-form :-ms-input-placeholder {
+.contact-form :-ms-input-placeholder {
   font-weight: 400;
 }
 
-form.contact-form ::placeholder {
+.contact-form ::placeholder {
   font-weight: 400;
 }
 
-form.contact-form.-light label,
-form.contact-form.-light p {
+.contact-form.-light label,
+.contact-form.-light p {
   color: white;
 }
 
-form.contact-form.-light select,
-form.contact-form.-light input[type="text"],
-form.contact-form.-light input[type="search"],
-form.contact-form.-light textarea,
-form.contact-form.-light input[type="email"] {
+.contact-form.-light select,
+.contact-form.-light input[type="text"],
+.contact-form.-light input[type="search"],
+.contact-form.-light textarea,
+.contact-form.-light input[type="email"] {
   color: white;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-form.contact-form.-light ::-moz-placeholder {
+.contact-form.-light ::-moz-placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-form.contact-form.-light :-ms-input-placeholder {
+.contact-form.-light :-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-form.contact-form.-light ::placeholder {
+.contact-form.-light ::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 

@@ -29,7 +29,7 @@
             <div class="header-left">
               <div class="header__logo ">
                 <a data-barba href="{{ route('home') }}">
-                  <img src="img/general/logo.svg" alt="logo">
+                  <img src="{{ asset('img/general/logo.svg')}}" alt="logo">
                 </a>
               </div>
 
@@ -45,8 +45,12 @@
                   <div class="mobile-bg js-mobile-bg"></div>
 
                   <div class="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
-                    <a href="login.html" class="text-dark-1">Log in</a>
-                    <a href="signup.html" class="text-dark-1 ml-30">Sign Up</a>
+                    @if (Route::is('register'))
+                    <a href="{{ route('login') }}" class="text-dark-1">Log in</a>
+                    @endif
+                    @if (Route::is('login'))
+                    <a href="{{ route('register') }}" class="text-dark-1 ml-30">Sign Up</a>
+                    @endif
                   </div>
 
                   <div class="menu js-navList">
@@ -61,6 +65,9 @@
                       </li>
                       <li>
                         <a data-barba href="contact-1.html">Contact</a>
+                      </li>
+                      <li>
+                        <a data-barba href="{{ route('instructor.register') }}">Become an Instructor</a>
                       </li>
                     </ul>
                   </div>
@@ -112,7 +119,12 @@
               </div>
 
               <div class="header-right__buttons md:d-none">
-                <a href="signup.html" class="button -sm -rounded -dark-1 text-white">Sign Up</a>
+                @if (Route::is('register'))
+                <a href="{{ route('login') }}" class="button -sm -rounded -dark-1 text-white">Log in</a>
+                @endif
+                @if (Route::is('login'))
+                <a href="{{ route('register') }}" class="button -sm -rounded -dark-1 text-white">Sign Up</a>
+                @endif
               </div>
             </div>
           </div>

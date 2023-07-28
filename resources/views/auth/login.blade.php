@@ -33,7 +33,7 @@
 
     <div class="lh-12 text-dark-1 fw-500 text-center mt-20">Or</div>
     <div class="d-flex x-gap-20 items-center justify-between pt-20">
-      <button class="col-12 button -sm px-24 py-25 -outline-red-3 text-red-3 text-14">Log In with Google</button>
+      <a href="{{ route('instructor.login') }}" class="col-12 button -sm px-24 py-25 -outline-dark-3 text-dark-3 text-14">Je suis un Formateur</a>
     </div>
 </div>
 @endsection

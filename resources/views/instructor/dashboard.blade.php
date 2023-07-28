@@ -71,15 +71,10 @@
 
                         <div class="toggle-element -dropdown -dark-bg-dark-2 -dark-border-white-10 js-click-dropdown js-course-name-toggle">
                           <div class="text-14 y-gap-15 js-dropdown-list">
-
                             <div><a href="#" class="d-block js-dropdown-link">Animation</a></div>
-
                             <div><a href="#" class="d-block js-dropdown-link">Design</a></div>
-
                             <div><a href="#" class="d-block js-dropdown-link">Illustration</a></div>
-
                             <div><a href="#" class="d-block js-dropdown-link">Business</a></div>
-
                           </div>
                         </div>
                       </div>

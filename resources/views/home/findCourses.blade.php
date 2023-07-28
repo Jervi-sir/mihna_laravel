@@ -8,10 +8,10 @@
         <div class="col-xl-7 col-lg-6">
           <div class="masthead__content">
             <h1 data-anim-child="slide-up delay-1" class="masthead__title text-white">
-              Find a perfect Online Course
+              Formations locales, instructeurs vérifiés!
             </h1>
             <p data-anim-child="slide-up delay-1" class="masthead__text text-16 lh-2 text-white pt-10">
-              You can access 7900+ different courses from 600<br class="lg:d-none"> professional trainers for free
+              Opportunités d'apprentissage locales, réservations sécurisées, écoles et formateurs vérifiés.<br >  Zéro risque, juste des bénéfices!
             </p>
 
             <div data-anim-child="slide-up delay-1">
@@ -20,7 +20,7 @@
                   <div class="masthead-form__item col-md-8 col-sm-12">
                     <div class="d-flex items-center" style="flex: 1">
                       <i class="icon-search mr-10 ml-15"></i>
-                      <input type="text" placeholder="Your Search" style="max-width: unset; flex:1">
+                      <input type="text" placeholder="Cherchez votre formation ...." style="max-width: unset; flex:1;">
                     </div>
                   </div>
                   <div class="masthead-form__item col-md-4 col-sm-12">

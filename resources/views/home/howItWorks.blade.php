@@ -2,20 +2,13 @@
     <div class="container">
       <div class="row y-gap-20 justify-center text-center">
         <div class="col-auto">
-
           <div class="sectionTitle ">
-
-            <h2 class="sectionTitle__title ">How it works?</h2>
-
-            <p class="sectionTitle__text ">10,000+ unique online course list designs</p>
-
+            <h2 class="sectionTitle__title ">Comment ça fonctionne?</h2>
           </div>
-
         </div>
       </div>
 
       <div class="row y-gap-30 justify-between pt-60 lg:pt-40">
-
         <div class="col-xl-2 col-lg-3 col-md-6">
           <div class="d-flex flex-column items-center text-center">
             <div class="relative size-120 d-flex justify-center items-center rounded-full bg-light-4">
@@ -26,7 +19,7 @@
                 </div>
               </div>
             </div>
-            <div class="text-17 fw-500 text-dark-1 mt-30">Browse courses from our expert contributors.</div>
+            <div class="text-17 fw-500 text-dark-1 mt-30">Parcourez les formations proposées par nos prestataires experts.</div>
           </div>
         </div>
 
@@ -48,7 +41,7 @@
                 </div>
               </div>
             </div>
-            <div class="text-17 fw-500 text-dark-1 mt-30">Purchase quickly and securely.</div>
+            <div class="text-17 fw-500 text-dark-1 mt-30">Résérvez rapidement et en toute sécurité.</div>
           </div>
         </div>
 
@@ -70,11 +63,9 @@
                 </div>
               </div>
             </div>
-            <div class="text-17 fw-500 text-dark-1 mt-30">That’s it! Start learning right away.</div>
+            <div class="text-17 fw-500 text-dark-1 mt-30">C'est Tout ! Commencez à apprendre tout de suite.</div>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>

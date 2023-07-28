@@ -15,11 +15,13 @@ class HomeController extends Controller
             $data['trainings'][$index] = getFormation($training);
         }
         
-        $categories = Category::all();
+        $categories = Category::withCount('formations')->orderBy('formations_count', 'desc')->take(5)->get();
+
         foreach ($categories as $index => $category) {
             $data['categories'][$index] = [
                 'id' => $category->id,
-                'name' => $category->name
+                'name' => $category->name,
+                'formations_count' => $category->formations_count,
             ];
         }
 

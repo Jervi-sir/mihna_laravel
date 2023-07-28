@@ -32,7 +32,13 @@ class TrainingFactory extends Factory
             'start_date' => $start_date,
             'end_date' => $this->faker->dateTimeBetween($start_date, $start_date->format('Y-m-d H:i:s').' +2 months'),
             'price' => $this->faker->randomFloat(2, 10, 1000), // 10.00 - 1000.00
+            'total_seats' => $this->faker->numberBetween(1, 30),
+            'min_seats' => $this->faker->numberBetween(1, 8),
+            'nb_booked' => $this->faker->numberBetween(0, 30),
 
+            'what_learned' => $this->faker->sentence(15), // short description of 15 words
+            'requirements' => $this->faker->sentence(15), // short description of 15 words
+            'planning' => $this->faker->sentence(15), // short description of 15 words
         ];
     }
 }

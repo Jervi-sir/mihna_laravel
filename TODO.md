@@ -15,7 +15,11 @@ Project Description
 ### In Progress
 
 - [ ] booked formations
-- [ ] pagination in all formations
+- [ ] reset passwrod
+- [ ] toastr
+- [ ] add phone numner in edit profile socail media, so it will be like multiple phone numbers list
+
+- [ ] add a assistance when creating a formations. showing model of description, what you will learn as bullet points, requirements as bullet points too, planning time
 
 ### Done ✓
 
@@ -30,4 +34,14 @@ Project Description
 - [x] list my formations
 
 - [x] differentiate between auth student and auth instructor
+- [x] pagination in all formations Instructor
+- [x] make create formation functional
+- [x] edit profile Instructor
+
+- [x] add a report form for the user
+- [x] list notifications
+- [x] make notifications and user globally
+- [x] edit scoail list
+- [x] show formation
+
 

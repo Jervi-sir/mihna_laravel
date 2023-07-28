@@ -2,24 +2,15 @@
     <div data-anim-wrap class="container">
       <div data-anim-child="slide-left delay-1" class="row y-gap-20 justify-between items-center">
         <div class="col-lg-6">
-
           <div class="sectionTitle ">
-
-            <h2 class="sectionTitle__title ">Latest Books</h2>
-
-            <p class="sectionTitle__text ">10,000+ unique online course list designs</p>
-
+            <h2 class="sectionTitle__title ">Derniers livres</h2>
           </div>
-
         </div>
-
         <div class="col-auto">
-
           <a href="#" class="button -icon -purple-3 text-purple-1">
-            All Courses
+            Decouver Plus
             <i class="icon-arrow-top-right text-13 ml-10"></i>
           </a>
-
         </div>
       </div>
 

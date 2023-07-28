@@ -3,8 +3,7 @@
       <div class="row y-gap-20 justify-center text-center">
         <div class="col-auto">
           <div class="sectionTitle ">
-            <h2 class="sectionTitle__title ">Testimonials</h2>
-            <p class="sectionTitle__text ">10,000+ unique online course list designs</p>
+            <h2 class="sectionTitle__title ">Citation</h2>
           </div>
         </div>
       </div>
@@ -18,11 +17,10 @@
                     <img src="{{ asset('img/misc/quote.svg') }}" alt="quote">
                   </div>
                   <div class="testimonials__text md:text-20 fw-500 text-dark-1">
-                    It is no exaggeration to say this Educrat experience was transformative–both professionally and personally. This workshop will long remain a high point of my life.
+                    Rétablir la confiance entre étudiants et formateurs, c'est notre mission. Notre plateforme est le pont qui sécurise vos investissements en formation et garantit votre apprentissage
                   </div>
                   <div class="testimonials__author">
-                    <h5 class="text-17 lh-15 fw-500">Ali Tufan</h5>
-                    <div class="mt-5">Product Manager, Apple Inc</div>
+                    <h5 class="text-17 lh-15 fw-500">Mihna</h5>
                   </div>
                 </div>
               </div>

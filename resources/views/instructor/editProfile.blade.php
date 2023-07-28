@@ -1,5 +1,10 @@
 @extends('instructor.layouts.master')
 
+@section('script-top')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+@endsection
 @section('content')
 <div class="row pb-50 mb-10">
     <div class="col-auto">
@@ -25,125 +30,129 @@
             <button class="tabs__button text-light-1 js-tabs-button" data-tab-target=".-tab-item-3" type="button">
               Social Profiles
             </button>
-            <button class="tabs__button text-light-1 js-tabs-button" data-tab-target=".-tab-item-4" type="button">
+            {{--
+              <button class="tabs__button text-light-1 js-tabs-button" data-tab-target=".-tab-item-4" type="button">
               Notifications
             </button>
+            --}}
             <button class="tabs__button text-light-1 js-tabs-button" data-tab-target=".-tab-item-5" type="button">
-              Close Account
+              Report an Issue
             </button>
           </div>
 
           <div class="tabs__content py-30 px-30 js-tabs-content">
+            {{-- Tab1 Edit Profile --}}
             <div class="tabs__pane -tab-item-1 is-active">
-              <div class="row y-gap-20 x-gap-20 items-center">
-                <div class="col-auto">
-                  <img class="size-100" src="{{ asset('img/dashboard/edit/1.png')}}" alt="image">
-                </div>
+              <form action="{{ route('instructor.updateProfile')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row y-gap-20 x-gap-20 items-center">
+                  <div class="contact-form d-flex lg:flex-column">
+                    <div class=" shrink-0">
+                      <img src="{{ asset('img/dashboard/media/2.png') }}" alt="image" id="imagePreview" style="max-width: 300px !important;
+                      object-fit: cover;">
+                    </div>
+                    <div class="w-1/1 ml-30 lg:ml-0 lg:mt-20">
+                      <div class="form-upload col-12">
+                        <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Course thumbnail*</label>
+                        <div class="form-upload__wrap">
+                          <input type="file" id="imageUpload" name="profile_pic" style="display: none;" accept="image/*" >
+                          <label for="imageUpload" class="btn btn-primary" id="upload-button">Upload File</label>
+                          <p id="file-name">No file chosen</p>
+                          <script>
+                            var fileInput = document.getElementById('imageUpload');
+                            var preview = document.getElementById('imagePreview');
+                            var cropper;
+                            
+                            fileInput.addEventListener('change', function (e) {
+                                var file = e.target.files[0];
+                                var reader = new FileReader();
+                                if (cropper) {
+                                  cropper.destroy();
+                                }
+                                reader.onload = function(e) {
+                                    preview.src = e.target.result;
+                                    cropper = new Cropper(preview, {
+                                      aspectRatio: 1, // Change this to the aspect ratio you want
+                                      viewMode: 1,
+                                      crop: function(event) {
+                                          //console.log(event.detail.x);
+                                          //console.log(event.detail.y);
+                                          //console.log(event.detail.width);
+                                          //console.log(event.detail.height);
+                                          //console.log(event.detail.rotate);
+                                          //console.log(event.detail.scaleX);
+                                          //console.log(event.detail.scaleY);
+                                      }
+                                    });
+                                };
+                            
+                                reader.readAsDataURL(file);
+                            });
+                          </script>
+                            
+                          <style>
+                            #upload-button {
+                              padding: 10px 20px;
+                              color: white;
+                              background-color: blue;
+                              cursor: pointer;
+                            }
 
-                <div class="col-auto">
-                  <div class="text-16 fw-500 text-dark-1">Your avatar</div>
-                  <div class="text-14 lh-1 mt-10">PNG or JPG no bigger than 800px wide and tall.</div>
-
-                  <div class="d-flex x-gap-10 y-gap-10 flex-wrap pt-15">
-                    <div>
-                      <div class="d-flex justify-center items-center size-40 rounded-8 bg-light-3">
-                        <div class="icon-cloud text-16"></div>
+                            #file-name {
+                              margin-top: 10px;
+                            }
+                          </style>
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <div class="d-flex justify-center items-center size-40 rounded-8 bg-light-3">
-                        <div class="icon-bin text-16"></div>
-                      </div>
+                  </div>
+              </div>
+              
+
+                <div class="border-top-light pt-30 mt-30">
+                  <div class="contact-form row y-gap-30">
+                    <div class="col-md-12">
+                      <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Your School Name</label>
+                      <input type="text" name="school_name" placeholder="Your School Name">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Phone</label>
+                      <input type="text" name="phone_number" placeholder="Phone" value="{{ $user['phone_number'] }}">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Email</label>
+                      <input type="text"  placeholder="email" value="{{ $user['email'] }}" disabled>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Address</label>
+                      <input type="text" placeholder="Address Line 1">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Wilaya</label>
+                      <select class="form-select" name="wilaya_id" aria-label="Default select example">
+                        <option selected disabled>Selectioner lieu de la formation</option>
+                        @foreach ($wilayas as $wilaya)
+                        <option value="{{ $wilaya['id'] }}">{{ $wilaya['name'] }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Description</label>
+                      <textarea name="description" placeholder="Description..." rows="7"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                      <button class="button -md -purple-1 text-white">Update Profile</button>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="border-top-light pt-30 mt-30">
-                <form action="#" class="contact-form row y-gap-30">
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">First Name</label>
-
-                    <input type="text" placeholder="First Name">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Last Name</label>
-
-                    <input type="text" placeholder="Last Name">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Phone</label>
-
-                    <input type="text" placeholder="Phone">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Birthday</label>
-
-                    <input type="text" placeholder="Birthday">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Address Line 1</label>
-
-                    <input type="text" placeholder="Address Line 1">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Address Line 2</label>
-
-                    <input type="text" placeholder="Address Line 2">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">State</label>
-
-                    <input type="text" placeholder="State">
-                  </div>
-
-
-                  <div class="col-md-6">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Country</label>
-
-                    <input type="text" placeholder="Country">
-                  </div>
-
-
-                  <div class="col-12">
-
-                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Personal info</label>
-
-                    <textarea placeholder="Text..." rows="7"></textarea>
-                  </div>
-
-
-                  <div class="col-12">
-                    <button class="button -md -purple-1 text-white">Update Profile</button>
-                  </div>
-                </form>
-              </div>
+              </form>
             </div>
 
+            {{-- Tab2 Password Profile --}}
             <div class="tabs__pane -tab-item-2">
-              <form action="#" class="contact-form row y-gap-30">
-
+              <form action="{{ route('instructor.updatePassword')}}" method="POST" class="contact-form row y-gap-30">
+                @csrf
                 <div class="col-md-7">
 
                   <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Current password</label>
@@ -173,38 +182,32 @@
               </form>
             </div>
 
+            {{-- Tab3 Social Profile Profile --}}
             <div class="tabs__pane -tab-item-3">
-              <form action="#" class="contact-form row y-gap-30">
-
+              @php
+                  $social_media = json_decode($user['social_list'], true);
+              @endphp
+              <form action="{{ route('instructor.updateSocial')}}" method="POST" class="contact-form row y-gap-30">
+                @csrf
                 <div class="col-md-6">
-
-                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Twitter</label>
-
-                  <input type="text" placeholder="Twitter Profile">
-                </div>
-
-
-                <div class="col-md-6">
-
                   <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Facebook</label>
-
-                  <input type="text" placeholder="Facebook Profile">
+                  <input type="text" name="facebook" value="{{ $social_media['facebook'] }}" placeholder="Facebook Profile">
                 </div>
-
-
                 <div class="col-md-6">
-
                   <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Instagram</label>
-
-                  <input type="text" placeholder="Instagram Profile">
+                  <input type="text" name="instagram" value="{{ $social_media['instagram'] }}" placeholder="Instagram Profile">
                 </div>
-
-
                 <div class="col-md-6">
-
-                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">LinkedIn Profile URL</label>
-
-                  <input type="text" placeholder="LinkedIn Profile">
+                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Twitter</label>
+                  <input type="text" name="twitter" value="{{ $social_media['twitter'] }}" placeholder="Twitter Profile">
+                </div>
+                <div class="col-md-6">
+                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">LinkedIn</label>
+                  <input type="text" name="linkedin" value="{{ $social_media['linkedin'] }}" placeholder="LinkedIn Profile">
+                </div>
+                <div class="col-md-6">
+                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Youtube Channel</label>
+                  <input type="text" name="youtube" value="{{ $social_media['youtube'] }}" placeholder="LinkedIn Profile">
                 </div>
 
                 <div class="col-12">
@@ -213,6 +216,7 @@
               </form>
             </div>
 
+            {{-- Tab4 Notification Profile 
             <div class="tabs__pane -tab-item-4">
               <form action="#" class="contact-form">
                 <div class="row">
@@ -380,19 +384,25 @@
                 </div>
               </form>
             </div>
-
+            --}}
+            {{-- Tab5 Close Account Profile --}}
             <div class="tabs__pane -tab-item-5">
-              <form action="#" class="contact-form row y-gap-30">
+              <form action="{{ route('instructor.reportIssue') }}" method="POST" class="contact-form row y-gap-30">
+                @csrf
                 <div class="col-12">
-                  <div class="text-16 fw-500 text-dark-1">Close account</div>
-                  <p class="mt-10">Warning: If you close your account, you will be unsubscribed from all your 5 courses, and will lose access forever.</p>
+                  <div class="text-16 fw-500 text-dark-1">Report an issue you have encountered</div>
+                  <p class="mt-10">We might contact you if the issue is severe.</p>
                 </div>
                 <div class="col-md-7">
-                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Enter Password</label>
-                  <input type="text" placeholder="Enter Password">
+                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Email:</label>
+                  <input type="text" value="{{ $user['email']}}" name="email" placeholder="Describe the issue..." >
+                </div>
+                <div class="col-md-7">
+                  <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Issue:</label>
+                  <textarea name="description" placeholder="Describe the issue..." rows="7"></textarea>
                 </div>
                 <div class="col-12">
-                  <button class="button -md -purple-1 text-white">Close Account</button>
+                  <button class="button -md -purple-1 text-white">Send the report</button>
                 </div>
               </form>
             </div>

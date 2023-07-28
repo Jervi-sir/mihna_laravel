@@ -14,13 +14,17 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('categories')->insert([
-            ['name' => 'UI/UX Design', 'description' => 'This is UI/UX Design'],
-            ['name' => 'Development', 'description' => 'This is Development'],
-            ['name' => 'Data Science', 'description' => 'This is Data Science'],
-            ['name' => 'Business', 'description' => 'This is Business'],
-            ['name' => 'Financial', 'description' => 'This is Financial'],
-            ['name' => 'Marketing', 'description' => 'This is Marketing'],
-            ['name' => 'Design', 'description' => 'This is Design'],
+            ["name" => "Art & Design", "description" => "This is "],
+            ["name" => "Affaires & Finance", "description" => "This is "],
+            ["name" => "IT & Logiciel", "description" => "This is "],
+            ["name" => "Langue & Littérature", "description" => "This is "],
+            ["name" => "Développement Personnel", "description" => "This is "],
+            ["name" => "Santé & Fitness", "description" => "This is "],
+            ["name" => "Musique & Divertissement", "description" => "This is Design"],
+            ["name" => "Science & Ingénierie", "description" => "This is Design"],
+            ["name" => "Cuisine", "description" => "This is Design"],
+            ["name" => "Artisanat", "description" => "This is Design"],
+            ["name" => "Autres", "description" => "This is Design"],
             // Add as many categories as you want
         ]);        //
     }

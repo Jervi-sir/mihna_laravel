@@ -14,7 +14,13 @@ return new class extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            //$table->string('user_id');
+            $table->foreignId('wilaya_id')->nullable()->constrained();
+            $table->string('school_name')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('social_list')->nullable();
+            $table->string('address')->nullable();
+            $table->string('description')->nullable();
+            $table->string('punch_line')->nullable();
 
             $table->timestamps();
         });
