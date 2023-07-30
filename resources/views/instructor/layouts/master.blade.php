@@ -11,10 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../../../unpkg.com/leaflet%401.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+  @if(app()->environment('local'))
   @vite([
     'resources/assets/css/vendors.css',
     'resources/assets/css/main.css',
   ])
+  @elseif(app()->environment('production'))
+  <link rel="stylesheet" href="{{ asset('css/vendors.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+  @endif
   <title>Mihna</title>
   @yield('script-top')
 </head>
