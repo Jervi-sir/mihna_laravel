@@ -1,9 +1,6 @@
 @extends('instructor.layouts.master')
 @section('script-top')
-@if(app()->environment('local'))
-@include('layouts.includes2')
-
-
+  @include('layouts.includes2')
 @endsection
 @section('content')
 <div class="row pb-50 mb-10">
