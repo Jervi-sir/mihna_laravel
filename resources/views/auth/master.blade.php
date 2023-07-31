@@ -7,15 +7,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
-  @if(app()->environment('local'))
-  @vite([
-    'resources/assets/css/vendors.css',
-    'resources/assets/css/main.css',
-  ])
-  @elseif(app()->environment('production'))
-  <link rel="stylesheet" href="{{ asset('css/vendors.css')}}">
-  <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-  @endif
+  @include('layouts.includes1')
+
   <title>Mihna</title>
 </head>
 

@@ -1,12 +1,8 @@
 @extends('instructor.layouts.master')
 @section('script-top')
 @if(app()->environment('local'))
-@vite([
-  'resources/js/app.jsx',
-])
-@elseif(app()->environment('production'))
-<script src="{{ asset('js/app.jsx') }}"></script>
-@endif
+@include('layouts.includes2')
+
 
 @endsection
 @section('content')
