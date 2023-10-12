@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->foreignId('coach_id')->constrained('users');
             $table->foreignId('wilaya_id')->constrained();
-            
+
             $table->string('address')->nullable();
             $table->string('title');
 
@@ -34,8 +34,9 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->float('price');
             $table->tinyInteger('certificate')->default(1);
-            
+
             $table->bigInteger('visit_count')->default(0); // Adds visit_count column
+            $table->enum('status', ['pending', 'confirmed', 'completed'])->default('pending');
 
             $table->timestamps();
         });

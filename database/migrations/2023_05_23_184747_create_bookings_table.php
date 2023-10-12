@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('training_id')->constrained();
-            $table->string('status');
+            $table->enum('status', ['pending', 'confirmed', 'completed'])->default('pending');
+            $table->enum('payment_status', ['pending', 'half_paid', 'full_paid'])->default('pending');
+            $table->decimal('amount_paid', 8, 2)->default(0);
+
             $table->timestamps();
         });
     }

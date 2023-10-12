@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('booking_id')->constrained();
             $table->decimal('amount', 8, 2); // You may need to adjust this for your specific currency
-            $table->string('status');
+            $table->enum('status', ['held', 'released', 'refunded'])->default('held');
+            $table->string('transaction_id')->nullable();
             $table->timestamps();
         });
     }

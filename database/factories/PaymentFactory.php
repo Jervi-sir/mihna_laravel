@@ -19,7 +19,7 @@ class PaymentFactory extends Factory
         return [
             'booking_id' => 1, // you may want to set this depending on your needs
             'amount' => $this->faker->randomFloat(2, 10, 200), // you may want to set this depending on your needs
-            'status' => $this->faker->randomElement(['full', 'half']),
+            'status' => $this->faker->randomElement(['released', 'refunded']),
         ];
     }
 }

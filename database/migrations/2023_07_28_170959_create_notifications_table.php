@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->bigInteger('reference_id');
             $table->dateTime('read_at')->nullable();
+            $table->enum('status', ['unread', 'read'])->default('unread');
             $table->timestamps();
         });
     }
