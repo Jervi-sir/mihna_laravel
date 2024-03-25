@@ -1,19 +1,19 @@
 @extends('auth.master')
 
 @section('content')
-<div class="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16">
+<div class="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16 mt-30">
     <h3 class="text-30 lh-13">Welcome Student</h3>
     <p class="mt-10">Don't have an account yet? <a href="{{ route('register') }}"  class="text-purple-1">Sign up for free</a></p>
     <form class="contact-form respondForm__form row y-gap-20 pt-30" method="POST" action="{{ route('login') }}">
       @csrf
       <div class="col-12">
           <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Username Or Email</label>
-          <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="username" >
+          <input type="email" placeholder="Email" name="email" :value="{{ old('email') }}" value="formateur@gmail.com" required autocomplete="username" >
           @include('components.errors', ['messages' => $errors->get('email')])
       </div>
       <div class="col-12">
           <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Password</label>
-          <input type="password" placeholder="Password" name="password" required autocomplete="new-password" >
+          <input type="password" placeholder="Password" name="password" value="password" required autocomplete="new-password" >
           @include('components.errors', ['messages' => $errors->get('password')])
       </div>
       @if (Route::has('password.request'))
