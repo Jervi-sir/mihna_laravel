@@ -10,7 +10,7 @@
             </div>
 
             <div class="header__logo ml-30 md:ml-20">
-              <a data-barba href="index-2.html">
+              <a data-barba href={{ route('home') }}>
                 <img class="-light-d-none" src="{{ asset('img/general/logo.svg') }}" alt="logo">
                 <img class="-dark-d-none" src="{{ asset('img/general/logo-dark.svg') }}" alt="logo">
               </a>

@@ -18,10 +18,10 @@
             </div>
 
             @auth
-            <div class="sidebar__item ">
-              <a href="#" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+            <div class="sidebar__item {{ Route::currentRouteNamed('student.myFormations') ? '-is-active' : '' }}">
+              <a href={{ route('student.myFormations') }} class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                 <i class="text-20 icon-tech mr-15"></i>
-                Purchased
+                Reservations
               </a>
             </div>
             @endauth

@@ -1,5 +1,5 @@
 <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
-    <a href="courses-single-1.html" class="coursesCard -type-1 ">
+    <a href={{ route('formation.show', ['formation_id' => $formation['id']])}} class="coursesCard -type-1 ">
       <div class="relative">
         <div class="coursesCard__image overflow-hidden rounded-8">
           <img class="w-1/1" src="{{ $formation['images'] }}" alt="image">
@@ -11,11 +11,7 @@
               <span class="text-11 lh-1 uppercase fw-500 text-white">{{ $formation['category_name'] }}</span>
             </div>
           </div>
-          <div>
-            <div class="px-15 rounded-200 bg-green-1">
-              <span class="text-11 lh-1 uppercase fw-500 text-dark-1">Best sellers</span>
-            </div>
-          </div>
+        
         </div>
       </div>
 

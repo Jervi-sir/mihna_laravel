@@ -47,7 +47,7 @@ class RoleMiddleware
                 'phone_number' => $user->phone_number,
                 'profile_pic' => $user->profile_pic,
                 'created_at' => $user->created_at,
-                'social_list' => $user->profile->social_list,
+                //'social_list' => $user->profile->social_list,
             ]);
         }
         

@@ -11,8 +11,7 @@ use Illuminate\Http\Request;
 class FormationController extends Controller
 {
     public function checkout() {
-        
-        return view('training.checkout');
+        return view('formations.checkout');
     }
     public function invoice() {
         return view('training.invoice');

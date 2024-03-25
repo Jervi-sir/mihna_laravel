@@ -104,7 +104,7 @@
                   <div class="lh-1 line-through">{{ $formation['price'] }} <small>DA</small> </div>
                 </div>
 
-                <button class="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">Reserver Maintenant</button>
+                <a href={{ route('formation.checkout', ['formation_id' => $formation['id']]) }} class="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">Reserver Maintenant</a>
                 {{--<div class="text-14 lh-1 text-center mt-30">30-Day Money-Back Guarantee</div>--}}
 
                 <div class="mt-25">

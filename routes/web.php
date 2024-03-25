@@ -58,6 +58,7 @@ Route::prefix('instructor')->group(function () {
 });
 
 Route::prefix('student')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/my-formations', [StudentController::class, 'myFormations'])->name('student.myFormations');      //[]
     Route::get('/billing', [StudentController::class, 'billing'])->name('student.billing');      //[]
     Route::get('/edit-profile', [StudentController::class, 'editProfile'])->name('student.editProfile'); //[]
     Route::post('/update-profile', [StudentController::class, 'updateProfile'])->name('student.updateProfile'); //[]
@@ -78,7 +79,7 @@ Route::prefix('student')->middleware(['auth', 'verified'])->group(function () {
 
 Route::prefix('formation')->group(function () {
     Route::middleware('auth')->group(function() {
-        Route::get('/checkout', [FormationController::class, 'checkout'])->name('formation.checkout'); //[]
+        Route::get('/checkout/{formation_id}', [FormationController::class, 'checkout'])->name('formation.checkout'); //[]
         Route::get('/invoice', [FormationController::class, 'invoice'])->name('formation.invoice');    //[]
     });
     Route::get('/list', [FormationController::class, 'list'])->name('formation.list');             //[]

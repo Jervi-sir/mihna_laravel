@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Training;
 
 class StudentController extends Controller
 {
+    public function myFormations() {
+        $trainings = Training::paginate(6);
+        foreach ($trainings as $index => $training) {
+            $data['trainings'][$index] = getFormation($training);
+        }
+
+        return view('reservations.reservations', [
+            'formations' => $data['trainings'],
+        ]);
+    }
     public function billing() {
         return view('student.billing');
     }
