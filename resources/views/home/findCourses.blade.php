@@ -11,16 +11,16 @@
               Formations locales, instructeurs vérifiés!
             </h1>
             <p data-anim-child="slide-up delay-1" class="masthead__text text-16 lh-2 text-white pt-10">
-              Opportunités d'apprentissage locales, réservations sécurisées, écoles et formateurs vérifiés.<br >  Zéro risque, juste des bénéfices!
+              <u> <b> Trouver</b></u> des Opportunités d'apprentissage locales, réservations sécurisées, écoles et formateurs vérifiés.<br >  Sans risque, juste des bénéfices!
             </p>
 
             <div data-anim-child="slide-up delay-1">
               <div class="masthead-form bg-white rounded-16 mt-30 px-10 py-10">
-                <form class=" d-flex x-gap-30 y-gap-10 items-center flex-wrap">
+                <form action={{route('formation.search')}}  method="GET" class=" d-flex x-gap-30 y-gap-10 items-center flex-wrap">
                   <div class="masthead-form__item col-md-8 col-sm-12">
                     <div class="d-flex items-center" style="flex: 1">
                       <i class="icon-search mr-10 ml-15"></i>
-                      <input type="text" placeholder="Cherchez votre formation ...." style="max-width: unset; flex:1;">
+                      <input name="keywords" type="text" required placeholder="Cherchez votre formation ...." style="max-width: unset; flex:1;">
                     </div>
                   </div>
                   <div class="masthead-form__item col-md-4 col-sm-12">
@@ -34,9 +34,9 @@
                       </div>
                       <div class="dropdown__item shadow-1">
                         <div class="y-gap-15 js-dropdown-list">
-                          <div><a href="#" class="d-block js-dropdown-link">Category 1</a></div>
-                          <div><a href="#" class="d-block js-dropdown-link">Category 2</a></div>
-                          <div><a href="#" class="d-block js-dropdown-link">Category 3</a></div>
+                          <div><a href="#" class="d-block js-dropdown-link">Ain Temouchent</a></div>
+                          <div><a href="#" class="d-block js-dropdown-link">Oran</a></div>
+                          <div><a href="#" class="d-block js-dropdown-link">Alger</a></div>
                         </div>
                       </div>
                     </div>
@@ -49,7 +49,7 @@
             </div>
 
             <div data-anim-child="slide-up delay-6">
-              <div class="text-white mt-20">Trending Search: Development, Business, Design, Merketing</div>
+              <div class="text-white mt-20">En Tendance: Development, Business, Design, Merketing</div>
             </div>
           </div>
         </div>
